@@ -16,7 +16,7 @@
 为简化和演示功能， 登录页面和注册页面只有一个文字提示，未实现功能
 
 3、创建navigation导航
-（1）创建navigation目录
+（1）创建navigation资源目录
 （2）在navigation目录点击右键创建Navigation resource file类型文件
     我们创建的文件叫login_navigation，布局的标签就是navigation
 （3）通过Desgin界面左上角的new Destination 按钮把实现创建好的3个Fragment添加进来，按照你需要的跳转关系给他们之间连线就可以了。
