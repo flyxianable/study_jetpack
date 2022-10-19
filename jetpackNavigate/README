@@ -22,7 +22,7 @@
 （3）通过Desgin界面左上角的new Destination 按钮把实现创建好的3个Fragment添加进来，按照你需要的跳转关系给他们之间连线就可以了。
  创建后会在navigation标签自动生成3个fragment标签，id定义分别是welcomeFragment、loginFragment和registerFragment
 
-4、创建使用导航到宿主布局和Activity （官方叫NavHostFragment）
+4、创建使用导航的宿主布局和Activity （官方叫NavHostFragment）
 (1)宿主布局 activity_login.xml
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     ...>
