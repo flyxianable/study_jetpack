@@ -2,6 +2,7 @@
 android jetpack 示例：包含jetpack的Navigate、DataBinding等
 
 jetpackNavigate：jetpack的Navigate示例
+
 DataBindingDemo：jetpack的DataBinding示例
 
 
