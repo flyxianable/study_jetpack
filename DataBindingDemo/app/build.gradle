@@ -1,38 +1,15 @@
 plugins {
     id 'com.android.application'
-    id 'maven-publish'
+    id 'kotlin-android'
 }
-
-publishing {
-    repositories {
-        maven {
-            groupId = 'com.lyblibrary.jetpack'
-            artifactId = "maventest"
-            version = "1.0.0"
-            packaging = 'aar'
-            url =  uri("${rootProject.projectDir}/repo")
-        }
-    }
-}
-
-//afterEvaluate {
-//    publishing {
-//        publications {
-//            // Creates a Maven publication called "release".
-//            groupId = 'com.example.MyLibrary'
-//            artifactId = 'final'
-//            version = '1.0'
-//        }
-//    }
-//}
 
 android {
-    compileSdk 32
+    compileSdk 33
 
     defaultConfig {
-        applicationId "com.example.jetpack.maventest"
+        applicationId "com.example.jetpack.databinding"
         minSdk 21
-        targetSdk 32
+        targetSdk 33
         versionCode 1
         versionName "1.0"
 
@@ -49,10 +26,18 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    dataBinding {
+        enabled = true
+    }
+
 }
 
 dependencies {
 
+    implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.appcompat:appcompat:1.2.0'
     implementation 'com.google.android.material:material:1.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
