@@ -6,10 +6,10 @@ plugins {
 publishing {
     repositories {
         maven {
-            groupId = 'com.lyblibrary.jetpack'
-            artifactId = "maventest"
-            version = "1.0.0"
-            packaging = 'aar'
+//            groupId = 'com.lyblibrary.jetpack'
+//            artifactId = "maventest"
+//            version = "1.0.0"
+//            packaging = 'aar'
             url =  uri("${rootProject.projectDir}/repo")
         }
     }

@@ -1,0 +1,66 @@
+参考：https://www.jianshu.com/p/66b93df4b7a6
+一、实现功能：
+欢迎页面可以分别跳转到登录页面和注册页面
+欢迎页面只有两个按钮， 一个是跳转登录页面，一个是跳转注册页面
+普通的方式需要三个Activity，但是使用jetpack的Navigation的功能，只需要一个Activity就可以实现，跳转逻辑可以通过拖拽实现。
+
+二、实现步骤
+
+1、主工程build.grale添加依赖：
+//navigation
+    def navigationVersion = "2.0.0"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigationVersion"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigationVersion"
+
+2、创建好三个页面，分别是WelcomeFragment.kt、LoginFragment.kt和RegisterFragment.kt
+为简化和演示功能， 登录页面和注册页面只有一个文字提示，未实现功能
+
+3、创建navigation导航
+（1）创建navigation目录
+（2）在navigation目录点击右键创建Navigation resource file类型文件
+    我们创建的文件叫login_navigation，布局的标签就是navigation
+（3）通过Desgin界面左上角的new Destination 按钮把实现创建好的3个Fragment添加进来，按照你需要的跳转关系给他们之间连线就可以了。
+ 创建后会在navigation标签自动生成3个fragment标签，id定义分别是welcomeFragment、loginFragment和registerFragment
+
+4、创建使用导航到宿主布局和Activity （官方叫NavHostFragment）
+(1)宿主布局 activity_login.xml
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    ...>
+
+    <fragment
+        android:id="@+id/nav_host_fragment"
+        //固定内容，声明这是一个宿主类
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        //创建的navigation导航资源文件
+        app:navGraph="@navigation/login_navigation"
+        //与系统的返回按钮相关联
+        app:defaultNavHost="true"
+        ...
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>
+（2）宿主Activity
+ 就是使用这个布局的壳，其他什么都不用写
+
+ 5、在WelcomeFragment中利用创建好的导航关系和id编写跳转关系
+ 其中R.id.loginFragment和R.id.registerFragment是导航文件login_navigation.xml中自动创建的
+  btGoLogin.setOnClickListener{
+            //跳转动画，不传就是默认值
+             val navOption = navOptions {
+                 anim {
+                     enter = R.anim.common_slide_in_right
+                     exit = R.anim.common_slide_in_right
+                     popEnter = R.anim.common_slide_in_right
+                     popExit = R.anim.common_slide_in_right
+                 }
+             }
+             val bundle = Bundle()
+             bundle.putString("bundleName", "liangyanbin")
+             findNavController().navigate(R.id.loginFragment, bundle, navOption)
+         }
+
+         btnRegister.setOnClickListener {
+                     findNavController().navigate(R.id.registerFragment)
+                 }
+
+
+ 6、自此完成通过jetpack的导航组件完成3个Fragment页面的跳转逻辑。
