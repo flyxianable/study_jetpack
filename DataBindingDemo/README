@@ -1,0 +1,42 @@
+参考：https://juejin.cn/post/6844903872520011784
+
+代码：kotlin
+
+步骤：
+1、主工程build.gradle
+
+android {
+    ...
+    dataBinding {
+        enabled = true
+    }
+}
+
+2、如果Gradle插件版本在3.1.0-alpha06以上，可以使用新的Data Binding编译器，有利于加速绑定数据文件的生成。在项目的gradle.properties文件添加如下配置。
+  android.databinding.enableV2=true
+
+  3、创建一个数据对象
+  data class User(var name: String, var age: Int)
+
+  4、布局 ，见activity_main.xml
+ android studio 支持将 ConstraintLayout、LinearLayout重构为databinding布局，自动在外层添加layout层
+ （见截图：auto add to databinding layout.jpg）
+
+  <?xml version="1.0" encoding="utf-8"?>
+  <layout xmlns:android="http://schemas.android.com/apk/res/android">
+     <data>
+         <variable name="user" type="com.gitcode.jetpack.User"/>
+     </data>
+     <LinearLayout
+           ...
+            >
+       //在TextView中使用
+       <TextView ..
+                 android:text="@{user.name}"
+                 .. />
+     </LinearLayout>
+</layout>
+
+
+
+
