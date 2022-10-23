@@ -21,6 +21,7 @@ android {
   4、布局 ，见activity_main.xml
  android studio 支持将 ConstraintLayout、LinearLayout重构为databinding布局，自动在外层添加layout层
  （见截图：auto add to databinding layout.jpg）
+ 
  ![自动添加layout布局的方法](DataBindingDemo/auto_add_databinding_layout.jpg)
 
   <?xml version="1.0" encoding="utf-8"?>
